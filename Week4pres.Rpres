@@ -1,0 +1,55 @@
+Data Product module Week 4
+========================================================
+author: Marie Dup
+date: 18th of November 2021
+autosize: true
+
+Linear regression model: mpg knowing transmission
+========================================================
+Simple example of how shiny can be used to build a web application.
+We choose the mtcars data set from R as we are more familiar. 
+From that on the left side bar menu user can select few additional predictors.
+Then assess the impact on the linear regression model
+***
+links: 
+Application:
+https://mariedup.shinyapps.io/ProductWeek4Assessment/
+
+Presentation:
+https://github.com/mardup/DataProducts
+
+
+
+Mtcars Dataset
+========================================================
+From a simple table we can sense the content and various data available from the dataset.
+```{r, echo=FALSE}
+library(dplyr)
+data (mtcars)
+summary(mtcars)
+
+```
+
+Mpg and transmission: simple linear model
+========================================================
+From a simple chart we can assume the transmission type would have a significant impact on the mpg.
+```{r, echo=FALSE}
+library(dplyr)
+data (mtcars)
+boxplot(mpg ~ am, data= mtcars, col = "bisque")
+```
+***
+the simple model
+```{r, echo=TRUE}
+reg <- (lm(mpg ~ am, data=mtcars[,]))
+reg$coef
+```
+
+Benefit of the application
+========================================================
+By using the application, we realise the optimal model with the 3 predictors would be model would be:
+```{r, echo=FALSE}
+regfinal <- (lm(mpg ~ am + wt + qsec + wt:am, data=mtcars[,]))
+summary(regfinal)
+```
+
